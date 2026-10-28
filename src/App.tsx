@@ -4,6 +4,7 @@ import HeroSection from './components/HeroSection.tsx';
 import ComparisonSection from './components/ComparisonSection.tsx';
 import ShowcaseSection from './components/ShowcaseSection.tsx';
 import CostCalculator from './components/CostCalculator.tsx';
+import AIBlueprintGenerator from './components/AIBlueprintGenerator.tsx';
 import WebsiteAudit from './components/WebsiteAudit.tsx';
 import ProcessSection from './components/ProcessSection.tsx';
 import FounderTrustSection from './components/FounderTrustSection.tsx';
@@ -11,9 +12,11 @@ import ContactSection from './components/ContactSection.tsx';
 import Footer from './components/Footer.tsx';
 import FloatingWhatsApp from './components/FloatingWhatsApp.tsx';
 import AdCampaignStudioModal from './components/AdCampaignStudioModal.tsx';
+import ProjectCredentialsModal from './components/ProjectCredentialsModal.tsx';
 
 export default function App() {
   const [isAdStudioOpen, setIsAdStudioOpen] = useState(false);
+  const [isCredentialsOpen, setIsCredentialsOpen] = useState(false);
   const [selectedProjectForBrief, setSelectedProjectForBrief] = useState('');
 
   const handleSelectProjectForBrief = (title: string) => {
@@ -27,7 +30,10 @@ export default function App() {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-indigo-500 selection:text-white">
       {/* Top Header */}
-      <Header onOpenAdStudio={() => setIsAdStudioOpen(true)} />
+      <Header
+        onOpenAdStudio={() => setIsAdStudioOpen(true)}
+        onOpenCredentials={() => setIsCredentialsOpen(true)}
+      />
 
       {/* Main Content Sections */}
       <main>
@@ -42,6 +48,9 @@ export default function App() {
 
         {/* Interactive Naira Pricing & ROI Estimator */}
         <CostCalculator />
+
+        {/* AI Website Strategy Blueprint Generator (Gemini Powered) */}
+        <AIBlueprintGenerator />
 
         {/* 60-Second Digital Presence Audit */}
         <WebsiteAudit />
@@ -66,6 +75,12 @@ export default function App() {
       <AdCampaignStudioModal
         isOpen={isAdStudioOpen}
         onClose={() => setIsAdStudioOpen(false)}
+      />
+
+      {/* Project Credentials & API Key Modal */}
+      <ProjectCredentialsModal
+        isOpen={isCredentialsOpen}
+        onClose={() => setIsCredentialsOpen(false)}
       />
     </div>
   );

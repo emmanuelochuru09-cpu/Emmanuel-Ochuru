@@ -1,10 +1,11 @@
-import { MessageCircle, Megaphone, PhoneCall } from 'lucide-react';
+import { MessageCircle, Megaphone, PhoneCall, Key, Sparkles } from 'lucide-react';
 
 interface HeaderProps {
   onOpenAdStudio: () => void;
+  onOpenCredentials: () => void;
 }
 
-export default function Header({ onOpenAdStudio }: HeaderProps) {
+export default function Header({ onOpenAdStudio, onOpenCredentials }: HeaderProps) {
   return (
     <>
       {/* Top Announcement Bar */}
@@ -26,17 +27,25 @@ export default function Header({ onOpenAdStudio }: HeaderProps) {
               <span>WhatsApp: 08032568417</span>
             </a>
             <span aria-hidden="true" className="text-slate-600 hidden sm:inline">·</span>
-            <span className="hidden sm:inline text-emerald-400 font-semibold font-mono">Special Promo: -₦50,000 Off + 15% Discount on All Packages</span>
+            <span className="hidden sm:inline text-emerald-400 font-semibold font-mono">Special Promo: -₦50,000 Off + 15% Discount</span>
           </div>
 
           <div className="flex items-center gap-3">
+            <button
+              type="button"
+              onClick={onOpenCredentials}
+              className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 text-[11px] font-mono font-medium transition-colors"
+            >
+              <Key className="w-3 h-3 text-emerald-400" />
+              <span>API Key & Deploy</span>
+            </button>
             <button
               type="button"
               onClick={onOpenAdStudio}
               className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-indigo-500/20 hover:bg-indigo-500/30 text-indigo-300 border border-indigo-500/40 text-[11px] font-medium transition-colors"
             >
               <Megaphone className="w-3 h-3 text-indigo-400" />
-              <span>Client Ad Campaign Kit</span>
+              <span>Client Ad Kit</span>
             </button>
             <a
               href="tel:08032568417"
